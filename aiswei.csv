@@ -1,0 +1,367 @@
+# AISWEI inverter, from MB001_ASW GEN-Modbus V2.1.5
+# Addresses are protocol addresses: leading 3x/4x removed, 1 subtracted (31309 -> IR 1308, 41001 -> HR 1000)
+# (*) = supported on some models only
+register;area;description;type;unit;factor;length;enum
+1000;IR;Device type;E16;;;;1=Single phase|3=Three phase
+1001;IR;Modbus address;U16;;;;
+1002;IR;Serial number;String;;;16;
+1018;IR;Machine type;String;;;8;
+1026;IR;Current grid code;E16;;;;8=GR PPC|35=NB/T32004:2018|47=AU AS 4777.2 : 2015|48=NZ AS 4777.2 : 2015|49=ENGG-50Hz|50=ENGG-60Hz|51=TOR Erzeuger Typ A V1.1|59=CNS15382:2018|64=EN 50549-1|65=NL EN50549-1:2019|66=BR NBR 16149:2013|67=VDE0126-1-1/A1/VFR|68=IEC 61727 50Hz|69=C10/11:2019|70=VDE-AR-N4105:2018|71=IEC 61727 60Hz|72=G98/1|73=G99/1|74=AU AS/NZS4777.2:2020 A|75=AU AS/NZS4777.2:2020 B|76=AU AS/NZS4777.2:2020 C|77=NZ AS/NZS4777.2:2020|78=IL SI4777.3|79=KR KS C 8565:2020|80=ES UNE206007-1|81=CY EN50549-1|82=CS PPDS A1|83=PL EN50549-1|84=CEI 0-21:2019|85=DK EN50549-1|86=CH NA/EEA-NE7|87=SE EIFS:2018|88=FI EN50549-1|89=RO Order208|90=SI EN50549-1|91=LV EN50549-1|92=VDE0126/VFR2019 IS (50Hz)|93=VDE0126/VFR2019 IS (60Hz)|94=ZA NRS 097-2-1:2017|95=BR PORTARIA No.140|96=NTS 631 Type A|97=NTS 631 Type B|98=NO EN50549-1|99=VDE-AR-N 4110|100=EN 50549-2|101=DEWA:2016|102=DK1 EN50549-1|103=ZA RPPs
+1027;IR;Rated power;U32;W;;;
+1029;IR;Master software version;String;;;7;
+1036;IR;Slave software version;String;;;7;
+1043;IR;Safety version;String;;;7;
+1050;IR;Communication protocol version;String;;;6;
+1056;IR;Manufacturer name;String;;;8;
+1064;IR;Brand name;String;;;8;
+1072;IR;Inverter model;E16;;;;1=PV 1-phase 1-3kW|2=PV 1-phase 3-6kW|3=PV 3-phase 3-10kW|4=PV 3-phase 15-23kW|5=PV 3-phase 50-60kW|11=HY 1-phase 1-3kW|12=HY 1-phase 3-6kW|13=HY 3-phase 5-12kW|14=HY 1-phase <1kW (Compass)|15=HY 3-phase w/o EPS 5-12kW|16=HY 3-phase with diesel 5-12kW
+1073;IR;MPPT number;U16;;;;
+1074;IR;String current number;U16;;;;
+1075;IR;Hardware version;String;;;2;
+1077;IR;Master CPU sub-version;String;;;3;
+1096;IR;Slave CPU version;String;;;7;
+1103;IR;Slave CPU sub-version;String;;;3;
+1116;IR;PV1~PV4 string current number;U16;;;;
+# 1117;IR;PV5~PV8 string current number;U16;;;;
+# 1118;IR;PV9~PV12 string current number;U16;;;;
+# 1119;IR;PV13~PV16 string current number;U16;;;;
+# 1120;IR;PV17~PV20 string current number;U16;;;;
+# 1121;IR;PV21~PV24 string current number;U16;;;;
+# 1122;IR;PV25~PV28 string current number;U16;;;;
+# 1123;IR;PV29~PV32 string current number;U16;;;;
+1300;IR;Grid rated voltage;U16;V;0.1;;
+1301;IR;Grid rated frequency;U16;Hz;0.01;;
+1302;IR;E-Today of inverter;U32;kWh;0.1;;
+1304;IR;E-Total of inverter;U32;kWh;0.1;;
+1306;IR;H-Total;U32;h;;;
+1308;IR;Device state;E16;;;;0=Wait|1=Normal|2=Fault|4=Checking
+1309;IR;Connect time;U16;s;;;
+1310;IR;Internal temperature;S16;°C;0.1;;
+1311;IR;Inverter U phase temperature;S16;°C;0.1;;
+1312;IR;Inverter V phase temperature;S16;°C;0.1;;
+1313;IR;Inverter W phase temperature;S16;°C;0.1;;
+1314;IR;Boost temperature;S16;°C;0.1;;
+1315;IR;Bidirectional DC/DC converter temperature (*);S16;°C;0.1;;
+1316;IR;Bus voltage;U16;V;0.1;;
+1318;IR;PV1 voltage;U16;V;0.1;;
+1319;IR;PV1 current;U16;A;0.01;;
+1320;IR;PV2 voltage;U16;V;0.1;;
+1321;IR;PV2 current;U16;A;0.01;;
+# 1322;IR;PV3 voltage (*);U16;V;0.1;;
+# 1323;IR;PV3 current (*);U16;A;0.01;;
+# 1324;IR;PV4 voltage (*);U16;V;0.1;;
+# 1325;IR;PV4 current (*);U16;A;0.01;;
+# 1326;IR;PV5 voltage (*);U16;V;0.1;;
+# 1327;IR;PV5 current (*);U16;A;0.01;;
+# 1328;IR;PV6 voltage (*);U16;V;0.1;;
+# 1329;IR;PV6 current (*);U16;A;0.01;;
+# 1330;IR;PV7 voltage (*);U16;V;0.1;;
+# 1331;IR;PV7 current (*);U16;A;0.01;;
+# 1332;IR;PV8 voltage (*);U16;V;0.1;;
+# 1333;IR;PV8 current (*);U16;A;0.01;;
+# 1334;IR;PV9 voltage (*);U16;V;0.1;;
+# 1335;IR;PV9 current (*);U16;A;0.01;;
+# 1336;IR;PV10 voltage (*);U16;V;0.1;;
+# 1337;IR;PV10 current (*);U16;A;0.01;;
+# 1338;IR;String 1 current (*);U16;A;0.1;;
+# 1339;IR;String 2 current (*);U16;A;0.1;;
+# 1340;IR;String 3 current (*);U16;A;0.1;;
+# 1341;IR;String 4 current (*);U16;A;0.1;;
+# 1342;IR;String 5 current (*);U16;A;0.1;;
+# 1343;IR;String 6 current (*);U16;A;0.1;;
+# 1344;IR;String 7 current (*);U16;A;0.1;;
+# 1345;IR;String 8 current (*);U16;A;0.1;;
+# 1346;IR;String 9 current (*);U16;A;0.1;;
+# 1347;IR;String 10 current (*);U16;A;0.1;;
+# 1348;IR;String 11 current (*);U16;A;0.1;;
+# 1349;IR;String 12 current (*);U16;A;0.1;;
+# 1350;IR;String 13 current (*);U16;A;0.1;;
+# 1351;IR;String 14 current (*);U16;A;0.1;;
+# 1352;IR;String 15 current (*);U16;A;0.1;;
+# 1353;IR;String 16 current (*);U16;A;0.1;;
+# 1354;IR;String 17 current (*);U16;A;0.1;;
+# 1355;IR;String 18 current (*);U16;A;0.1;;
+# 1356;IR;String 19 current (*);U16;A;0.1;;
+# 1357;IR;String 20 current (*);U16;A;0.1;;
+1358;IR;L1 phase voltage;U16;V;0.1;;
+1359;IR;L1 phase current;U16;A;0.1;;
+1360;IR;L2 phase voltage (*);U16;V;0.1;;
+1361;IR;L2 phase current (*);U16;A;0.1;;
+1362;IR;L3 phase voltage (*);U16;V;0.1;;
+1363;IR;L3 phase current (*);U16;A;0.1;;
+1364;IR;RS line voltage (*);U16;V;0.1;;
+1365;IR;RT line voltage (*);U16;V;0.1;;
+1366;IR;ST line voltage (*);U16;V;0.1;;
+1367;IR;Grid frequency;U16;Hz;0.01;;
+1368;IR;Apparent power;U32;VA;;;
+1370;IR;Active power;S32;W;;;
+1372;IR;Reactive power;S32;Var;;;
+1374;IR;Power factor;S16;;0.01;;
+1376;IR;Fault state of inverter itself;E16;;;;0=No internal fault|1=Internal fault
+1377;IR;Error message;E16;;;;1=Communication fails between M-S|3=Relay check fail|4=DC Injection high|5=Auto test function failed|6=DC bus too high|8=AC HCT failure|9=GFCI device failure|10=Device fault|32=ROCOF fault|33=Fac fault: Fac out of range|34=AC voltage out of range|35=Utility loss|36=GFCI failure|37=PV over voltage|38=Isolation fault|40=Over temperature in inverter|41=Consistent fault: Vac differs M-S|42=Consistent fault: Fac differs M-S|43=Consistent fault: Ground I differs M-S|44=Consistent fault: DC inj. differs M-S|45=Consistent fault: Fac,Vac differs M-S|46=High DC bus|47=Consistent fault|48=Average volt of ten minutes fault|49=PV1 lightning arrester fault|50=PV2 lightning arrester fault|51=Fuse failure|52=Neutral line loss fault|53=Insulation test: measure voltage >300mV before constant current source|54=Insulation test: measure voltage out of range after constant current source|55=Insulation test: N-PE relay switch, measure voltage <40mV|56=GFCI protect fault 30mA|57=GFCI protect fault 60mA|58=GFCI protect fault 150mA|59=PV1 string current abnormal|60=PV2 string current abnormal|61=DRMS communication fails (S9 open)|62=DRMS order disconnection device (S0 close)|63=L-PE short-circuit protection error|64=PV input mode error|65=PE connection fault|66=PV1 reverse connection fault|67=PV2 reverse connection fault|68=PV3 reverse connection fault|69=External input failure|70=AFCI self-test failure|71=AFCI failure (PV1-10)|72=Parallel 485 communication fault|73=Parallel CAN communication fault
+1378;IR;Warning message;E16;;;;0=No warning|30=Recover from warning|150=SPD Damaged|156=Internal fan warning|157=External fan warning|163=String current abnormal|165=Ground connect warning|166=CPU self-test: Register abnormal|167=CPU self-test: RAM abnormal|168=CPU self-test: ROM abnormal|174=Low Air Temperature|175=Battery SOC Low|176=Battery Fault Status|177=Battery Communication Disconnect|178=EPS Output Over|179=Combox and Cloud Disconnect|180=PV string inverse
+1388;IR;IOS measure value;U16;;;;
+1389;IR;Power limitation master-slave status;E16;;;;0=Not available (limitation disabled)|1=Master (limitation enabled)|2=Slave (limitation enabled)
+1390;IR;Grid connection status;E16;;;;0=Disconnection|1=Connection
+1600;IR;PV total power;U32;W;;;
+1602;IR;PV E-Today;U32;kWh;0.1;;
+1604;IR;PV E-Total;U32;kWh;0.1;;
+1606;IR;Battery communication status;E16;;;;10=Normal|5=Error
+1607;IR;Battery status;E16;;;;0=Not available|1=Idle|2=Charging|3=Discharging|4=Error
+# 1608;IR;Battery error status 1;B16;;;;0=Communication data error|1=Cell/module voltage too high|2=Cell/module voltage too low|3=Battery temp too high|4=Battery temp too low|5=Discharging current over limit|6=Charging current over limit|7=Internal communication error|8=Internal cell voltage unbalance|9=System insulation resistance too low|10=Voltage sensor failure|11=Temperature sensor failure|12=Contactor failure|13=Self-test failure during starting|14=IC self-test failure
+# 1609;IR;Battery error status 2;B16;;;;0=Self-test failure battery voltage|1=Self-test failure system voltage|2=Self-test failure insulation resistance|3=RTC invalid|4=EEPROM failure|5=Flash failure|6=AFE invalid|7=Insulation resistance detect chip failure|9=Current sampling chip failure|10=HDC failure|11=Daisy chain failure|12=Precharge failure
+# 1610;IR;Battery error status 3;B16;;;;0=Battery damaged|1=Input overvoltage|2=Input reversed|3=Circuit breaker failure
+1612;IR;Battery warning status 1;B16;;;;0=Communication data error|1=Battery/module voltage too high|2=Battery/module voltage too low|3=Battery temp too high|4=Battery temp too low|5=Discharging current over limit|6=Charging current over limit|7=Internal communication failure|8=Internal cell voltage unbalance
+1616;IR;Battery voltage;U16;V;0.01;;
+1617;IR;Battery current;S16;A;0.1;;
+1618;IR;Battery power;S32;W;;;
+1620;IR;Battery temperature;S16;°C;0.1;;
+1621;IR;Battery SOC;U16;%;0.01;;
+1622;IR;Battery SOH;U16;%;0.01;;
+1623;IR;Battery charging current limit;U16;A;0.1;;
+1624;IR;Battery discharge current limit;U16;A;0.1;;
+1625;IR;Battery E-Charge-Today;U32;kWh;0.1;;
+1627;IR;Battery E-Discharge-Today;U32;kWh;0.1;;
+1629;IR;E-Consumption-Today at AC side;U32;kWh;0.1;;
+1631;IR;E-Generation-Today at AC side;U32;kWh;0.1;;
+1633;IR;EPS load voltage;U16;V;0.1;;
+1634;IR;EPS load current;U16;A;0.1;;
+1635;IR;EPS load frequency;U16;Hz;0.01;;
+1636;IR;EPS load active power;S32;W;;;
+1638;IR;EPS load reactive power;S32;Var;;;
+1640;IR;E-Consumption-Today at EPS load side;U32;kWh;0.1;;
+1642;IR;E-Consumption-Total at EPS load side;U32;kWh;0.1;;
+1644;IR;Phase 1 voltage for EPS load;U16;V;0.1;;
+1645;IR;Phase 1 current for EPS load;U16;A;0.1;;
+1646;IR;Phase 2 voltage for EPS load;U16;V;0.1;;
+1647;IR;Phase 2 current for EPS load;U16;A;0.1;;
+1648;IR;Phase 3 voltage for EPS load;U16;V;0.1;;
+1649;IR;Phase 3 current for EPS load;U16;A;0.1;;
+1650;IR;Phase 1 active power for EPS load;S32;W;;;
+1652;IR;Phase 1 reactive power for EPS load;S32;Var;;;
+1654;IR;Phase 2 active power for EPS load;S32;W;;;
+1656;IR;Phase 2 reactive power for EPS load;S32;Var;;;
+1658;IR;Phase 3 active power for EPS load;S32;W;;;
+1660;IR;Phase 3 reactive power for EPS load;S32;Var;;;
+1662;IR;Phase 1 active power for grid;U32;W;;;
+1664;IR;Phase 1 reactive power for grid;S32;Var;;;
+1666;IR;Phase 2 active power for grid;U32;W;;;
+1668;IR;Phase 2 reactive power for grid;S32;Var;;;
+1670;IR;Phase 3 active power for grid;U32;W;;;
+1672;IR;Phase 3 reactive power for grid;S32;Var;;;
+1674;IR;Energy charge today for grid;U32;kWh;0.1;;
+1676;IR;Energy charge total for grid;U32;kWh;0.1;;
+1678;IR;Battery insulation resistance;U16;kΩ;;;
+1679;IR;Battery charge/discharge cycles;U16;;;;
+1680;IR;Environment temperature;U16;°C;0.1;;
+200;HR;Remote switch command;E16;;;;0=POWER OFF|1=POWER ON|170=Initialization status
+# 1000;HR;RTC: Year;U16;;;;
+# 1001;HR;RTC: Month;U16;;;;
+# 1002;HR;RTC: Day;U16;;;;
+# 1003;HR;RTC: Hour;U16;;;;
+# 1004;HR;RTC: Minute;U16;;;;
+# 1005;HR;RTC: Seconds;U16;;;;
+1101;HR;Storage inverter switch;E16;;;;1=OFF|2=ON
+1102;HR;Type selection of energy storage machine;E16;;;;0=Invalid|1=Energy storage machine|2=Grid off inverter|3=Grid connected inverter|4=Force charge with city electricity (battery wakeup)
+1103;HR;Run mode;E16;;;;0=Invalid|1=Off|2=Self generating self use|3=Backup power supply|4=Customer defined
+# 1104;HR;Battery manufacturer;E16;;;;1=PYLON|2=DYNESS|3=BYD|4=LG|5=AISWEI
+1107;HR;Smart meter status;E16;;;;10=Meter online|5=Meter offline
+1108;HR;Smart meter adjustment flag;E16;;;;10=Start|5=Stop
+1109;HR;Set target power value;S32;W;;;
+1111;HR;Current power value of smart meter;S32;W;;;
+# 1113;HR;Anti reverse current flag;E16;;;;10=ON|5=OFF
+# 1114;HR;Battery wake-up (force charge) sign;E16;;;;10=ON|5=OFF|65535=Not triggered
+# 1115;HR;UPS function;E16;;;;0=Enable EPS function|1=Enable UPS function
+1150;HR;Commbox and cloud communication status;E16;;;;10=Cloud online|5=Cloud offline|175=Network not configured
+1151;HR;Charge/discharge flag;E16;;;;1=Stop|2=Charging|3=Discharge
+1152;HR;Charge/discharge power command (- charge, + discharge);S16;W;;;
+1153;HR;Charging SOC upper limit;U16;%;0.01;;
+1154;HR;Discharge SOC lower limit;U16;%;0.01;;
+# 1155;HR;Obtaining power ratio of power grid;U16;%;0.01;;
+# 4000;HR;Active power control function;E16;;;;0=Disable|1=Enable
+4001;HR;EEG control function;E16;;;;0=Disable|1=Enable
+# 4002;HR;Slope load function;E16;;;;0=Disable|1=Enable
+# 4003;HR;Overvoltage reduce power function;E16;;;;0=Disable|1=Enable
+# 4004;HR;Overfrequency reduce power function;E16;;;;0=Disable|1=Enable
+# 4005;HR;Reactive power control function;E16;;;;0=Disable|1=Enable
+# 4006;HR;LVRT function;E16;;;;0=Disable|1=Enable
+# 4007;HR;HVRT function;E16;;;;0=Disable|1=Enable
+# 4008;HR;10 minutes average overvoltage protect function;E16;;;;0=Disable|1=Enable
+# 4009;HR;Islanding protect function;E16;;;;0=Disable|1=Enable
+# 4011;HR;PE connection check function;E16;;;;0=Disable|1=Enable
+# 4013;HR;AFCI function;E16;;;;0=Disable|1=Enable
+# 4014;HR;PV string current monitoring function;E16;;;;0=Disable|1=Enable
+# 4016;HR;Overload function;E16;;;;0=Disable|1=Enable
+# 4018;HR;SPD detection function;E16;;;;0=Disable|1=Enable
+# 4019;HR;Low voltage increase power function;E16;;;;0=Disable|1=Enable
+# 4020;HR;Low frequency increase power function;E16;;;;0=Disable|1=Enable
+# 4022;HR;Primary low frequency function (*);E16;;;;0=Disable|1=Enable
+# 4023;HR;Communication loss detection function (*);E16;;;;0=Disable|1=Enable
+# 4024;HR;Shadow MPPT function;E16;;;;0=Disable|1=Enable
+# 4025;HR;External input signal function;E16;;;;0=Disable|1=Enable
+# 4026;HR;Sunspec write function;E16;;;;0=Disable|1=Enable
+5200;HR;Grid code;E16;;;;8=GR PPC|35=NB/T32004:2018|47=AU AS 4777.2 : 2015|48=NZ AS 4777.2 : 2015|49=ENGG-50Hz|50=ENGG-60Hz|51=TOR Erzeuger Typ A V1.1|59=CNS15382:2018|64=EN 50549-1|65=NL EN50549-1:2019|66=BR NBR 16149:2013|67=VDE0126-1-1/A1/VFR|68=IEC 61727 50Hz|69=C10/11:2019|70=VDE-AR-N4105:2018|71=IEC 61727 60Hz|72=G98/1|73=G99/1|74=AU AS/NZS4777.2:2020 A|75=AU AS/NZS4777.2:2020 B|76=AU AS/NZS4777.2:2020 C|77=NZ AS/NZS4777.2:2020|78=IL SI4777.3|79=KR KS C 8565:2020|80=ES UNE206007-1|81=CY EN50549-1|82=CS PPDS A1|83=PL EN50549-1|84=CEI 0-21:2019|85=DK EN50549-1|86=CH NA/EEA-NE7|87=SE EIFS:2018|88=FI EN50549-1|89=RO Order208|90=SI EN50549-1|91=LV EN50549-1|92=VDE0126/VFR2019 IS (50Hz)|93=VDE0126/VFR2019 IS (60Hz)|94=ZA NRS 097-2-1:2017|95=BR PORTARIA No.140|96=NTS 631 Type A|97=NTS 631 Type B|98=NO EN50549-1|99=VDE-AR-N 4110|100=EN 50549-2|101=DEWA:2016|102=DK1 EN50549-1|103=ZA RPPs
+# 5201;HR;Overvoltage protection value of first grid connection;U16;V;0.1;;
+# 5202;HR;Undervoltage protection value of first grid connection;U16;V;0.1;;
+# 5203;HR;Overfrequency protection value of first grid connection;U16;Hz;0.01;;
+# 5204;HR;Underfrequency protection value of first grid connection;U16;Hz;0.01;;
+# 5205;HR;Grid voltage high limit3;U16;V;0.1;;
+# 5206;HR;Grid voltage high limit Time3;U32;ms;;;
+# 5208;HR;Grid voltage high limit2;U16;V;0.1;;
+# 5209;HR;Grid voltage high limit Time2;U32;ms;;;
+# 5211;HR;Grid voltage high limit1;U16;V;0.1;;
+# 5212;HR;Grid voltage high limit Time1;U32;ms;;;
+# 5214;HR;Grid voltage low limit3;U16;V;0.1;;
+# 5215;HR;Grid voltage low limit Time3;U32;ms;;;
+# 5217;HR;Grid voltage low limit2;U16;V;0.1;;
+# 5218;HR;Grid voltage low limit Time2;U32;ms;;;
+# 5220;HR;Grid voltage low limit1;U16;V;0.1;;
+# 5221;HR;Grid voltage low limit Time1;U32;ms;;;
+# 5223;HR;10 minutes average overvoltage threshold;U16;V;0.1;;
+# 5224;HR;10 minutes average overvoltage protect time;U16;ms;;;
+# 5225;HR;Overvoltage recover value;U16;V;0.1;;
+# 5226;HR;Undervoltage recover value;U16;V;0.1;;
+# 5227;HR;Grid frequency high limit3;U16;Hz;0.01;;
+# 5228;HR;Grid frequency high limit Time3;U32;ms;;;
+# 5230;HR;Grid frequency high limit2;U16;Hz;0.01;;
+# 5231;HR;Grid frequency high limit Time2;U32;ms;;;
+# 5233;HR;Grid frequency high limit1;U16;Hz;0.01;;
+# 5234;HR;Grid frequency high limit Time1;U32;ms;;;
+# 5236;HR;Grid frequency low limit3;U16;Hz;0.01;;
+# 5237;HR;Grid frequency low limit Time3;U32;ms;;;
+# 5239;HR;Grid frequency low limit2;U16;Hz;0.01;;
+# 5240;HR;Grid frequency low limit Time2;U32;ms;;;
+# 5242;HR;Grid frequency low limit1;U16;Hz;0.01;;
+# 5243;HR;Grid frequency low limit Time1;U32;ms;;;
+# 5245;HR;Vary rate of frequency protect value;U16;Hz/s;0.01;;
+# 5246;HR;Vary rate of frequency protect time;U32;ms;;;
+# 5248;HR;Overfrequency recover value;U16;Hz;0.01;;
+# 5249;HR;Underfrequency recover value;U16;Hz;0.01;;
+# 5250;HR;Time of first connection to grid;U16;s;;;
+# 5251;HR;Time of re-connection to grid;U16;s;;;
+# 5252;HR;ISO protect threshold;U16;kΩ;;;
+# 5253;HR;DCI protect threshold;U16;mA;;;
+# 5254;HR;DCI protect time;U16;ms;;;
+# 5400;HR;Load rate of first connection to grid;U16;%Pn/min;;;
+# 5401;HR;Load rate of re-connection to grid;U16;%Pn/min;;;
+# 5402;HR;Active power set;U16;%Pn;0.01;;
+# 5403;HR;Increase rate of active power;U16;%Pn/min;0.01;;
+# 5404;HR;Decrease rate of active power;U16;%Pn/min;0.01;;
+# 5407;HR;Over frequency reduce power mode;E16;;;;0=None|1=Fixed ratio, non-hysteresis|2=Fixed ratio, hysteresis|3=Not fixed ratio, non-hysteresis|4=Not fixed ratio, hysteresis|5=Three points, non-hysteresis|6=Three points, hysteresis|7=Storage Italy, non-hysteresis|8=Storage Italy, hysteresis
+# 5408;HR;Over frequency reduce power: start frequency;U16;Hz;0.01;;
+# 5409;HR;Over frequency reduce power: stop frequency;U16;Hz;0.01;;
+# 5410;HR;Over frequency reduce power: back frequency;U16;Hz;0.01;;
+# 5411;HR;Reduce ratio of over frequency reduce power;U16;%Pn or %Pm;0.01;;
+# 5412;HR;Over frequency reduce power: reduce power delay time;U16;s;0.1;;
+# 5413;HR;Over frequency reduce power: recover power delay time;U16;s;0.1;;
+# 5415;HR;Speed of over frequency recover to Pn;U16;%Pn/min;0.01;;
+# 5416;HR;Over frequency reduce power: 0 power frequency point (*);U16;Hz;0.01;;
+# 5418;HR;Over voltage reduce power mode;E16;;;;0=None|1=Not fixed ratio, non-hysteresis|2=Not fixed ratio, hysteresis|3=Fixed ratio, non-hysteresis|4=Fixed ratio, hysteresis|5=Taiwan autonomous power regulation|6=Trina Solar customization mode
+# 5419;HR;Over voltage reduce power: start voltage;U16;%Un;0.01;;
+# 5421;HR;Over voltage reduce power: stop voltage;U16;%Un;0.01;;
+# 5423;HR;Over voltage reduce power: back voltage;U16;%Un;0.01;;
+# 5425;HR;Reduce ratio of over voltage reduce power;U16;%Pn or %Pm;0.01;;
+# 5426;HR;Over voltage reduce power delay time;U16;s;0.1;;
+# 5427;HR;Over voltage recover power delay time;U16;s;0.1;;
+# 5428;HR;Speed of over voltage recover to Pn;U16;%Pn/min;0.01;;
+# 5431;HR;Under frequency increase power mode;E16;;;;0=None|1=Fixed ratio, non-hysteresis|2=Fixed ratio, hysteresis|3=Not fixed ratio, non-hysteresis|4=Not fixed ratio, hysteresis|5=Three points, non-hysteresis|6=Three points, hysteresis|7=Storage Italy, non-hysteresis|8=Storage Italy, hysteresis
+# 5432;HR;Under frequency increase power: start frequency;U16;Hz;0.01;;
+# 5433;HR;Under frequency increase power: stop frequency;U16;Hz;0.01;;
+# 5434;HR;Under frequency increase power: back frequency;U16;Hz;0.01;;
+# 5435;HR;Increase ratio of under frequency increase power;U16;%Pn or %Pm;0.01;;
+# 5436;HR;Under frequency increase power delay time;U16;s;0.1;;
+# 5437;HR;Under frequency recover power delay time;U16;s;0.1;;
+# 5439;HR;Speed of under frequency recover to Pn;U16;%Pn/min;0.01;;
+# 5440;HR;Under frequency increase power 0 power frequency point;U16;Hz;0.01;;
+# 5442;HR;Under voltage increase power mode;E16;;;;0=None|1=Fixed ratio, non-hysteresis|2=Fixed ratio, hysteresis|3=Not fixed ratio, non-hysteresis|4=Not fixed ratio, hysteresis
+# 5443;HR;Under voltage increase power: start voltage;U16;%Un;0.01;;
+# 5444;HR;Under voltage increase power: stop voltage;U16;%Un;0.01;;
+# 5445;HR;Under voltage increase power: back voltage;U16;%Un;0.01;;
+# 5446;HR;Increase ratio of under voltage increase power;U16;%Pn or %Pm;0.01;;
+# 5447;HR;Under voltage increase power delay time;U16;s;0.1;;
+# 5448;HR;Under voltage recover power delay time;U16;s;0.1;;
+# 5449;HR;Speed of under voltage recover to Pn;U16;%Pn/min;0.01;;
+5450;HR;Pav (*);S16;%Pn;0.01;;
+5451;HR;DRMs Pval (*);U16;%Pn;0.01;;
+# 5500;HR;Reactive power control mode;E16;;;;0=None|1=Fixed power factor|2=cos phi(P) curve|3=Fixed Q value|4=Fixed Q value of AU DRMs|5=Linear Q(U) curve|6=Hysteresis Q(U) curve|7=Taiwan autonomous control
+# 5501;HR;Time constant of reactive power curve;U16;s;;;
+# 5502;HR;Power factor;S16;;0.0001;;
+# 5503;HR;cos phi(P) curve: active power of first point;U16;%Pn;0.01;;
+# 5504;HR;cos phi(P) curve: cos phi of first point;S16;;0.0001;;
+# 5505;HR;cos phi(P) curve: active power of second point;U16;%Pn;0.01;;
+# 5506;HR;cos phi(P) curve: cos phi of second point;S16;;0.0001;;
+# 5507;HR;cos phi(P) curve: active power of third point;U16;%Pn;0.01;;
+# 5508;HR;cos phi(P) curve: cos phi of third point;S16;;0.0001;;
+# 5509;HR;cos phi(P) curve: active power of fourth point;U16;%Pn;0.01;;
+# 5510;HR;cos phi(P) curve: cos phi of fourth point;S16;;0.0001;;
+# 5511;HR;Lock in voltage (cos phi(P) curve);U16;%Un;0.01;;
+# 5512;HR;Lock out voltage (cos phi(P) curve);U16;%Un;0.01;;
+# 5515;HR;Q set value;S16;%Sn;0.01;;
+# 5517;HR;Q(U) curve: U of first point;U16;%Un;0.01;;
+# 5518;HR;Q(U) curve: Q of first point;S16;%Sn;0.01;;
+# 5519;HR;Q(U) curve: U of second point;U16;%Un;0.01;;
+# 5520;HR;Q(U) curve: Q of second point;S16;%Sn;0.01;;
+# 5521;HR;Q(U) curve: U of third point;U16;%Un;0.01;;
+# 5522;HR;Q(U) curve: Q of third point;S16;%Sn;0.01;;
+# 5523;HR;Q(U) curve: U of fourth point;U16;%Un;0.01;;
+# 5524;HR;Q(U) curve: Q of fourth point;S16;%Sn;0.01;;
+# 5525;HR;Lock in power (Q(U) curve);U16;%Pn;0.01;;
+# 5526;HR;Lock out power (Q(U) curve);U16;%Pn;0.01;;
+# 5600;HR;LVRT reactive current calculation mode;E16;;;;0=None|1=GB/T 19964|2=BDEW
+# 5601;HR;LVRT three phase fault reactive current limit;U16;%In;0.01;;
+# 5602;HR;LVRT single/double phase fault reactive current limit;U16;%In;0.01;;
+# 5603;HR;LVRT fault detection voltage type;E16;;;;0=Phase voltage|1=Line voltage|2=Positive sequence voltage
+# 5604;HR;Threshold of insensitive area of positive sequence voltage jump;U16;%Un;0.1;;
+# 5605;HR;LVRT trigger voltage;U16;%Un;0.01;;
+# 5606;HR;K-factor of positive sequence reactive current;U16;;0.01;;
+# 5607;HR;Reactive power maintenance after LVRT voltage recovery;U16;ms;;;
+# 5608;HR;LVRT active power limit mode;E16;;;;0=Active power first|1=Active power reduced to below 10% In|2=Unlimited active power
+# 5609;HR;HVRT reactive current calculation mode;E16;;;;0=None|1=GB/T 19964|2=BDEW
+# 5610;HR;HVRT three phase fault reactive current limit;U16;%In;0.01;;
+# 5611;HR;HVRT single/double phase fault reactive current limit;U16;%In;0.01;;
+# 5612;HR;HVRT fault detection voltage type;E16;;;;0=Phase voltage|1=Line voltage|2=Positive sequence voltage
+# 5613;HR;Threshold of insensitive area of negative sequence voltage jump;U16;%Un;0.1;;
+# 5614;HR;HVRT trigger voltage;U16;%Un;0.01;;
+# 5615;HR;K-factor of negative sequence reactive current;U16;;0.01;;
+# 5616;HR;Reactive power maintenance after HVRT voltage recovery;U16;ms;;;
+# 5617;HR;HVRT active power limit mode;E16;;;;0=Active power first|1=Active power reduced to below 10% In|2=Unlimited active power
+# 5618;HR;Zero current threshold;U16;%Un;0.01;;
+# 6400;HR;CT phase 1 line to neutral volts;U16;V;0.1;;
+# 6401;HR;CT phase 2 line to neutral volts;U16;V;0.1;;
+# 6402;HR;CT phase 3 line to neutral volts;U16;V;0.1;;
+# 6403;HR;CT phase 1 current;U16;A;0.1;;
+# 6404;HR;CT phase 2 current;U16;A;0.1;;
+# 6405;HR;CT phase 3 current;U16;A;0.1;;
+# 6406;HR;CT phase 1 power;S32;W;;;
+# 6408;HR;CT phase 2 power;S32;W;;;
+# 6410;HR;CT phase 3 power;S32;W;;;
+# 6412;HR;CT phase 1 volt amps;U32;VA;;;
+# 6414;HR;CT phase 2 volt amps;U32;VA;;;
+# 6416;HR;CT phase 3 volt amps;U32;VA;;;
+# 6418;HR;CT phase 1 volt amps reactive;S32;Var;;;
+# 6420;HR;CT phase 2 volt amps reactive;S32;Var;;;
+# 6422;HR;CT phase 3 volt amps reactive;S32;Var;;;
+# 6424;HR;CT phase 1 power factor;S16;;0.01;;
+# 6425;HR;CT phase 2 power factor;S16;;0.01;;
+# 6426;HR;CT phase 3 power factor;S16;;0.01;;
+# 6427;HR;CT phase 1 phase angle;U16;°;;;
+# 6428;HR;CT phase 2 phase angle;U16;°;;;
+# 6429;HR;CT phase 3 phase angle;U16;°;;;
+# 6430;HR;CT average line to neutral volts;U16;V;0.1;;
+# 6431;HR;CT average line current;U16;A;0.1;;
+# 6432;HR;CT sum of line currents;U16;A;0.1;;
+# 6433;HR;CT total system power;S32;W;;;
+# 6435;HR;CT total system volt amps;U32;VA;;;
+# 6437;HR;CT total system VAr;S32;Var;;;
+# 6439;HR;CT total system power factor;S16;;0.01;;
+# 6440;HR;CT total system phase angle;U16;°;;;
+# 6441;HR;CT frequency of supply voltages;U16;Hz;0.01;;
+# 6442;HR;CT import Wh since last reset;U32;Wh;;;
+# 6444;HR;CT export Wh since last reset;U32;Wh;;;
+# 6446;HR;CT import Varh since last reset;U32;Varh;;;
+# 6448;HR;CT export Varh since last reset;U32;Varh;;;
+# 6519;HR;AFCI self-test status (read only);E16;;;;0=Self-test failed|1=Self-test successful
+# 6520;HR;AFCI detection sensitivity;E16;;;;0=High detection accuracy|1=Low detection accuracy
+# 6521;HR;AFCI fault reset method;E16;;;;0=Automatic mode|1=Manual mode
+# 6522;HR;Reset faults manually;E16;;;;0=No need|1=Manual clear fault
+# 
