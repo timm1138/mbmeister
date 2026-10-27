@@ -5,10 +5,13 @@ The register layout is configurable with a .csv configuration file.
 
 A sample configuration for AISWEI based Solar inverters is added as example configuration.
 
-### Requirements
-pip install "pymodbus>=3.5"
+<img width="1015" height="667" alt="grafik" src="https://github.com/user-attachments/assets/6b052a59-ba2d-461b-b0e2-8e8b6f0ef130" />
 
 ### Usage
+Use the start scripts, python dependencies will be installed in a venv.
+
+OR by hand
+
 python mbmeister.py [registers.csv] [--host HOST_NAME] [--port PORT] [--unit UNIT_NUMBER]
 
 ### Configuration
@@ -38,7 +41,3 @@ register;area;description;type;unit;factor;length;enum
 The tool can write to holding registers (`HR` as area). New values can be staged or written directly.
 
 In case of failure not all staged values might be written.
-
-### screenshot
-with exmaple configuration
-<img width="1015" height="667" alt="grafik" src="https://github.com/user-attachments/assets/6b052a59-ba2d-461b-b0e2-8e8b6f0ef130" />
