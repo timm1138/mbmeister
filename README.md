@@ -38,3 +38,7 @@ register;area;description;type;unit;factor;length;enum
 The tool can write to holding registers (`HR` as area). New values can be staged or written directly.
 
 In case of failure not all staged values might be written.
+
+### screenshot
+with exmaple configuration
+<img width="1015" height="667" alt="grafik" src="https://github.com/user-attachments/assets/6b052a59-ba2d-461b-b0e2-8e8b6f0ef130" />
